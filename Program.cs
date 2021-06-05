@@ -16,7 +16,7 @@ namespace _30_05_2021_Database_Coursework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainFrame());
         }
     }
 }
