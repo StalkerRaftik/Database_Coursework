@@ -102,10 +102,26 @@ namespace _30_05_2021_Database_Coursework
                     var UsersTable = OriginFrame.FrameTables.TabPages[0].Controls.OfType<DataGridView>().First();
                     for (int i = 0; i < UsersTable.Rows.Count; i++)
                     {
+
+
                         if ((string)UsersTable.Rows[i].Cells["Login"].Value == info.Login
                             && (int)UsersTable.Rows[i].Cells["Age"].Value == info.Age)
                         {
-                            UsersTable.Rows.Remove(UsersTable.Rows[i]);
+                            GlobalInformation Instance = new GlobalInformation
+                            {
+                                Login = (string)UsersTable.Rows[i].Cells["Login"].Value,
+                                Age = (int)UsersTable.Rows[i].Cells["Age"].Value,
+                                PassedLevels = (int)UsersTable.Rows[i].Cells["PassedLevels"].Value,
+                                GameName = (string)UsersTable.Rows[i].Cells["GameName"].Value,
+                                Contacts = (string)UsersTable.Rows[i].Cells["Contacts"].Value,
+                                Developer = (string)UsersTable.Rows[i].Cells["Developer"].Value,
+                                FirstTimePlayed = (string)UsersTable.Rows[i].Cells["FirstTimePlayed"].Value,
+                                LastTimePlayed = (string)UsersTable.Rows[i].Cells["LastTimePlayed"].Value,
+                            };
+
+
+                            GlobalInformation_Access_Syncronized GI_Access = new GlobalInformation_Access_Syncronized(OriginFrame);
+                            GI_Access.RemoveData(Instance);
                         }
                     }
                 }
