@@ -6,134 +6,144 @@ using System.Threading.Tasks;
 
 namespace _30_05_2021_Database_Coursework
 {
-	public class TwoLinkedList
+	
+
+	public class PlayerInformationHashTable
 	{
-		public ListElem Head = null;
-		public ListElem Tail = null;
-
-		// Иниц. элементов списка
-		public class ListElem
+		public class TwoLinkedList
 		{
-			public ListElem Prev { get; set; }
-			public PlayerInformation Info { get; set; }
-			public ListElem Next { get; set; }
-		};
+			public ListElem Head = null;
+			public ListElem Tail = null;
 
-		// Конструктор
-		public TwoLinkedList() { }
+			// Иниц. элементов списка
+			public class ListElem
+			{
+				public ListElem Prev { get; set; }
+				public PlayerInformation Info { get; set; }
+				public ListElem Next { get; set; }
+			};
 
-		// Очистка списка
-		public void Clear()
-		{
-			if (this.Head == null) return;
+			// Конструктор
+			public TwoLinkedList() { }
 
-			this.Head = null;
-			this.Tail = null;
-			GC.Collect();
-		}
+			// Очистка списка
+			public void Clear()
+			{
+				if (this.Head == null) return;
 
-		// Проверка на пустоту
-		public bool IsEmpty()
-		{
-			return this.Head == null && this.Tail == null;
-		}
+				this.Head = null;
+				this.Tail = null;
+				GC.Collect();
+			}
 
-		// Добавление элемента по убыванию
-		public bool Add(PlayerInformation info)
-        {
-			if (this.FindElem(info) != null) return false;
+			// Проверка на пустоту
+			public bool IsEmpty()
+			{
+				return this.Head == null && this.Tail == null;
+			}
 
-			var Elem = new ListElem();
-			Elem.Info = (PlayerInformation)info.Clone();
+			// Добавление элемента по убыванию
+			public bool Add(PlayerInformation info)
+			{
+				if (this.FindElem(info) != null) return false;
 
-			if (this.Head == null)
-            {
-				this.Head = Elem;
-				this.Tail = Elem;
-				return true;
-            }
+				var Elem = new ListElem();
+				Elem.Info = (PlayerInformation)info.Clone();
 
-			this.Tail.Next = Elem;
-			this.Tail = this.Tail.Next;
-
-			return true;
-		}
-
-		public bool Remove(PlayerInformation info)
-        {
-			var elem = this.FindElem(info);
-			if (elem != null)
-            {
-				if (elem.Prev != null)
-                {
-					if (elem.Next != null)
-						elem.Prev.Next = elem.Next;
-					else
-                    {
-						elem.Prev.Next = null;
-						this.Tail = elem.Prev;
-					}
+				if (this.Head == null)
+				{
+					this.Head = Elem;
+					this.Tail = Elem;
+					return true;
 				}
 
-				if (elem.Next != null)
+				this.Tail.Next = Elem;
+				this.Tail = this.Tail.Next;
+
+				return true;
+			}
+
+			public bool Remove(PlayerInformation info)
+			{
+				var elem = this.FindElem(info);
+				if (elem != null)
 				{
 					if (elem.Prev != null)
-						elem.Next.Prev = elem.Prev;
+					{
+						if (elem.Next != null)
+							elem.Prev.Next = elem.Next;
+						else
+						{
+							elem.Prev.Next = null;
+							this.Tail = elem.Prev;
+						}
+					}
 					else
 					{
-						elem.Next.Prev = null;
-						this.Head = elem.Next;
+						this.Head = null;
 					}
+
+					if (elem.Next != null)
+					{
+						if (elem.Prev != null)
+							elem.Next.Prev = elem.Prev;
+						else
+						{
+							elem.Next.Prev = null;
+							this.Head = elem.Next;
+						}
+					}
+					else
+					{
+						this.Tail = null;
+					}
+					GC.Collect();
+					return true;
 				}
-				GC.Collect();
-				return true;
+				return false;
 			}
-			return false;
-        }
 
-		// Поиск по логину
-		public PlayerInformation FindElemInfo(string login)
-        {
-			ListElem mover = this.Head;
-			while (mover != null)
+			// Поиск по логину
+			public PlayerInformation FindElemInfo(string login)
 			{
-				if (mover.Info.Login == login) return mover.Info;
-				mover = mover.Next;
+				ListElem mover = this.Head;
+				while (mover != null)
+				{
+					if (mover.Info.Login == login) return mover.Info;
+					mover = mover.Next;
+				}
+				return null;
 			}
-			return null;
-		}
 
-		// Поиск по всей информации
-		public PlayerInformation FindElemInfo(PlayerInformation info)
-		{
-			ListElem mover = this.Head;
-			while (mover != null)
+			// Поиск по всей информации
+			public PlayerInformation FindElemInfo(PlayerInformation info)
 			{
-				if (mover.Info.Login == info.Login && mover.Info.Age == info.Age) return mover.Info;
-				mover = mover.Next;
+				ListElem mover = this.Head;
+				while (mover != null)
+				{
+					if (mover.Info.Login == info.Login && mover.Info.Age == info.Age) return mover.Info;
+					mover = mover.Next;
+				}
+				return null;
 			}
-			return null;
-		}
 
-		// Поиск элемента в списке
-		private ListElem FindElem(PlayerInformation info)
-		{
-			ListElem mover = this.Head;
-			while (mover != null)
+			// Поиск элемента в списке
+			private ListElem FindElem(PlayerInformation info)
 			{
-				if (mover.Info.Login == info.Login && mover.Info.Age == info.Age) return mover;
-				mover = mover.Next;
+				ListElem mover = this.Head;
+				while (mover != null)
+				{
+					if (mover.Info.Login == info.Login && mover.Info.Age == info.Age) return mover;
+					mover = mover.Next;
+				}
+				return null;
 			}
-			return null;
-		}
-	};
+		};
 
-	public class HashTable
-	{
 		private const int SIZE = 10000;
 		private TwoLinkedList[] Table = new TwoLinkedList[SIZE]; 
 
-		public HashTable()
+		public PlayerInformationHashTable()
         {
 			for (int i = 0; i < SIZE; i++)
             {

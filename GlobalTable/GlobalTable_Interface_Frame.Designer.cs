@@ -1,7 +1,7 @@
 ﻿
 namespace _30_05_2021_Database_Coursework
 {
-    partial class GlobalTable_Add_Frame
+    partial class GlobalTable_Interface_Frame
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace _30_05_2021_Database_Coursework
         /// </summary>
         private void InitializeComponent()
         {
-            this.AddButton = new System.Windows.Forms.Button();
+            this.ChangeButton = new System.Windows.Forms.Button();
             this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.MainLabel = new System.Windows.Forms.Label();
@@ -49,15 +49,16 @@ namespace _30_05_2021_Database_Coursework
             this.ContactsComboTextBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // AddButton
+            // ChangeButton
             // 
-            this.AddButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.AddButton.Location = new System.Drawing.Point(54, 439);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(170, 36);
-            this.AddButton.TabIndex = 0;
-            this.AddButton.Text = "Добавить";
-            this.AddButton.UseVisualStyleBackColor = true;
+            this.ChangeButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.ChangeButton.Location = new System.Drawing.Point(54, 439);
+            this.ChangeButton.Name = "ChangeButton";
+            this.ChangeButton.Size = new System.Drawing.Size(170, 36);
+            this.ChangeButton.TabIndex = 0;
+            this.ChangeButton.Text = "Добавить";
+            this.ChangeButton.UseVisualStyleBackColor = true;
+            this.ChangeButton.Click += new System.EventHandler(this.ChangeButton_Click);
             // 
             // LoginTextBox
             // 
@@ -91,7 +92,7 @@ namespace _30_05_2021_Database_Coursework
             this.AgeTextBox.Name = "AgeTextBox";
             this.AgeTextBox.Size = new System.Drawing.Size(197, 22);
             this.AgeTextBox.TabIndex = 4;
-            this.AgeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            this.AgeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AgeTextBox_KeyPress);
             // 
             // AgeLabel
             // 
@@ -134,7 +135,7 @@ namespace _30_05_2021_Database_Coursework
             this.PassedLevelsTextBox.Name = "PassedLevelsTextBox";
             this.PassedLevelsTextBox.Size = new System.Drawing.Size(120, 22);
             this.PassedLevelsTextBox.TabIndex = 9;
-            this.PassedLevelsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
+            this.PassedLevelsTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PassedLevelsTextBox_KeyPress);
             // 
             // DeveloperLabel
             // 
@@ -202,7 +203,7 @@ namespace _30_05_2021_Database_Coursework
             this.ContactsComboTextBox.Size = new System.Drawing.Size(150, 24);
             this.ContactsComboTextBox.TabIndex = 17;
             // 
-            // GlobalTable_Add_Frame
+            // GlobalTable_Interface_Frame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -224,10 +225,10 @@ namespace _30_05_2021_Database_Coursework
             this.Controls.Add(this.MainLabel);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.LoginTextBox);
-            this.Controls.Add(this.AddButton);
+            this.Controls.Add(this.ChangeButton);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "GlobalTable_Add_Frame";
+            this.Name = "GlobalTable_Interface_Frame";
             this.Text = "Меню";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -236,7 +237,7 @@ namespace _30_05_2021_Database_Coursework
 
         #endregion
 
-        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button ChangeButton;
         private System.Windows.Forms.TextBox LoginTextBox;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Label MainLabel;

@@ -46,18 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UsersTable\PlayersTable_Add_Frame.cs">
+    <Compile Include="GlobalTable\GlobalInformation_Access_Syncronized.cs" />
+    <Compile Include="GlobalTable\GlobalnformationList.cs" />
+    <Compile Include="UsersTable\PlayerInformation_Access_Syncronized.cs" />
+    <Compile Include="UsersTable\PlayersTable_Interface_Frame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UsersTable\PlayersTable_Add_Frame.Designer.cs">
-      <DependentUpon>PlayersTable_Add_Frame.cs</DependentUpon>
+    <Compile Include="UsersTable\PlayersTable_Interface_Frame.Designer.cs">
+      <DependentUpon>PlayersTable_Interface_Frame.cs</DependentUpon>
     </Compile>
     <Compile Include="_InformationClasses.cs" />
-    <Compile Include="GlobalTable_Add_Frame.cs">
+    <Compile Include="GlobalTable\GlobalTable_Interface_Frame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GlobalTable_Add_Frame.Designer.cs">
-      <DependentUpon>GlobalTable_Add_Frame.cs</DependentUpon>
+    <Compile Include="GlobalTable\GlobalTable_Interface_Frame.Designer.cs">
+      <DependentUpon>GlobalTable_Interface_Frame.cs</DependentUpon>
     </Compile>
     <Compile Include="UsersTable\PlayerInformationHashTable.cs" />
     <Compile Include="MainFrame.cs">
@@ -68,8 +71,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GlobalTable_Add_Frame.resx">
-      <DependentUpon>GlobalTable_Add_Frame.cs</DependentUpon>
+    <EmbeddedResource Include="GlobalTable\GlobalTable_Interface_Frame.resx">
+      <DependentUpon>GlobalTable_Interface_Frame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFrame.resx">
       <DependentUpon>MainFrame.cs</DependentUpon>
@@ -83,8 +86,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UsersTable\PlayersTable_Add_Frame.resx">
-      <DependentUpon>PlayersTable_Add_Frame.cs</DependentUpon>
+    <EmbeddedResource Include="UsersTable\PlayersTable_Interface_Frame.resx">
+      <DependentUpon>PlayersTable_Interface_Frame.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\PlayerInformation.datasource" />
     <None Include="Properties\Settings.settings">

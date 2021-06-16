@@ -1,7 +1,7 @@
 ﻿
 namespace _30_05_2021_Database_Coursework
 {
-    partial class PlayersTable_Add_Frame
+    partial class PlayersTable_Interface_Frame
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace _30_05_2021_Database_Coursework
         /// </summary>
         private void InitializeComponent()
         {
-            this.AddButton = new System.Windows.Forms.Button();
+            this.ApplyPlayerDataChangesButton = new System.Windows.Forms.Button();
             this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.MainLabel = new System.Windows.Forms.Label();
@@ -37,16 +37,16 @@ namespace _30_05_2021_Database_Coursework
             this.AgeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // AddButton
+            // ApplyPlayerDataChangesButton
             // 
-            this.AddButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.AddButton.Location = new System.Drawing.Point(62, 175);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(170, 36);
-            this.AddButton.TabIndex = 0;
-            this.AddButton.Text = "Добавить";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            this.ApplyPlayerDataChangesButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.ApplyPlayerDataChangesButton.Location = new System.Drawing.Point(62, 175);
+            this.ApplyPlayerDataChangesButton.Name = "ApplyPlayerDataChangesButton";
+            this.ApplyPlayerDataChangesButton.Size = new System.Drawing.Size(170, 36);
+            this.ApplyPlayerDataChangesButton.TabIndex = 0;
+            this.ApplyPlayerDataChangesButton.Text = "Добавить";
+            this.ApplyPlayerDataChangesButton.UseVisualStyleBackColor = true;
+            this.ApplyPlayerDataChangesButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // LoginTextBox
             // 
@@ -91,7 +91,7 @@ namespace _30_05_2021_Database_Coursework
             this.AgeLabel.TabIndex = 5;
             this.AgeLabel.Text = "Возраст:";
             // 
-            // PlayersTable_Add_Frame
+            // PlayersTable_Interface_Frame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -101,10 +101,10 @@ namespace _30_05_2021_Database_Coursework
             this.Controls.Add(this.MainLabel);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.LoginTextBox);
-            this.Controls.Add(this.AddButton);
+            this.Controls.Add(this.ApplyPlayerDataChangesButton);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "PlayersTable_Add_Frame";
+            this.Name = "PlayersTable_Interface_Frame";
             this.Text = "Меню";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -113,7 +113,7 @@ namespace _30_05_2021_Database_Coursework
 
         #endregion
 
-        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button ApplyPlayerDataChangesButton;
         private System.Windows.Forms.TextBox LoginTextBox;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Label MainLabel;
