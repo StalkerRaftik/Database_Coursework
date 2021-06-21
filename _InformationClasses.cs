@@ -55,11 +55,17 @@ namespace _30_05_2021_Database_Coursework
 
         public static bool operator ==(GlobalInformation Info1, GlobalInformation Info2)
         {
+            if (Info1 is null && Info2 is null) return true;
+            if (Info1 is null || Info2 is null) return false;
+
             return Info1.Equals(Info2);
         }
 
         public static bool operator !=(GlobalInformation Info1, GlobalInformation Info2)
         {
+            if (Info1 is null && Info2 is null) return false;
+            if (Info1 is null || Info2 is null) return true;
+
             return !Info1.Equals(Info2);
         }
 

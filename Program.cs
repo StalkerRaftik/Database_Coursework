@@ -8,6 +8,8 @@ namespace _30_05_2021_Database_Coursework
 {
     static class Program
     {
+        
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>

@@ -38,10 +38,10 @@ namespace _30_05_2021_Database_Coursework
 			return this.Head == null && this.Tail == null;
 		}
 
-		// Добавление элемента по убыванию
+		// Добавление элемента
 		public bool Add(GlobalInformation info)
         {
-			if (this.FindElem(info) != null) return false;
+			if ( this.FindElemInfo(info.Login) != null ) return false;
 
 			var Elem = new ListElem();
 			Elem.Info = (GlobalInformation)info.Clone();

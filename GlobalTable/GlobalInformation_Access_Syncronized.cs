@@ -22,16 +22,19 @@ namespace _30_05_2021_Database_Coursework
         {
             if (OriginFrame.GlobalInformation.Add(info))
             {
-                var UsersTable = OriginFrame.FrameTables.TabPages[0].Controls.OfType<DataGridView>().First();
-                int rowNumber = UsersTable.Rows.Add();
-                UsersTable.Rows[rowNumber].Cells["Login"].Value = info.Login;
-                UsersTable.Rows[rowNumber].Cells["Age"].Value = info.Age;
-                UsersTable.Rows[rowNumber].Cells["PassedLevels"].Value = info.PassedLevels;
-                UsersTable.Rows[rowNumber].Cells["GameName"].Value = info.GameName;
-                UsersTable.Rows[rowNumber].Cells["Developer"].Value = info.Developer;
-                UsersTable.Rows[rowNumber].Cells["Contacts"].Value = info.Contacts;
-                UsersTable.Rows[rowNumber].Cells["FirstTimePlayed"].Value = info.FirstTimePlayed;
-                UsersTable.Rows[rowNumber].Cells["LastTimePlayed"].Value = info.LastTimePlayed;
+                var GlobalTable = OriginFrame.FrameTables.TabPages[0].Controls.OfType<DataGridView>().First();
+                int rowNumber = GlobalTable.Rows.Add();
+                GlobalTable.Rows[rowNumber].Cells["Login"].Value = info.Login;
+                GlobalTable.Rows[rowNumber].Cells["Age"].Value = info.Age;
+                GlobalTable.Rows[rowNumber].Cells["PassedLevels"].Value = info.PassedLevels;
+                GlobalTable.Rows[rowNumber].Cells["GameName"].Value = info.GameName;
+                GlobalTable.Rows[rowNumber].Cells["Developer"].Value = info.Developer;
+                GlobalTable.Rows[rowNumber].Cells["Contacts"].Value = info.Contacts;
+                GlobalTable.Rows[rowNumber].Cells["FirstTimePlayed"].Value = info.FirstTimePlayed;
+                GlobalTable.Rows[rowNumber].Cells["LastTimePlayed"].Value = info.LastTimePlayed;
+
+
+                OriginFrame.GlobalInformationTree.NewElem(OriginFrame.GlobalInformation.FindElemInfo(info));
 
                 return true;
             }
@@ -40,24 +43,28 @@ namespace _30_05_2021_Database_Coursework
 
         public bool RemoveData(GlobalInformation info)
         {
-            DataGridView UsersTable;
-            if (OriginFrame.GlobalInformation.Remove(info))
+            DataGridView GlobalTable;
+            if (
+                OriginFrame.GlobalInformationTree.DeleteElem(info)
+                && OriginFrame.GlobalInformation.Remove(info)
+                )
             {
-                UsersTable = OriginFrame.FrameTables.TabPages[0].Controls.OfType<DataGridView>().First();
-                for (int rowNumber = 0; rowNumber < UsersTable.Rows.Count; rowNumber++)
+                GlobalTable = OriginFrame.FrameTables.TabPages[0].Controls.OfType<DataGridView>().First();
+                for (int rowNumber = 0; rowNumber < GlobalTable.Rows.Count; rowNumber++)
                 {
-                    if ((string)UsersTable.Rows[rowNumber].Cells["Login"].Value == info.Login
-                    && (int)UsersTable.Rows[rowNumber].Cells["Age"].Value == info.Age
-                    && (int)UsersTable.Rows[rowNumber].Cells["PassedLevels"].Value == info.PassedLevels
-                    && (string)UsersTable.Rows[rowNumber].Cells["GameName"].Value == info.GameName
-                    && (string)UsersTable.Rows[rowNumber].Cells["Developer"].Value == info.Developer
-                    && (string)UsersTable.Rows[rowNumber].Cells["Contacts"].Value == info.Contacts
-                    && (string)UsersTable.Rows[rowNumber].Cells["FirstTimePlayed"].Value == info.FirstTimePlayed
-                    && (string)UsersTable.Rows[rowNumber].Cells["LastTimePlayed"].Value == info.LastTimePlayed)
+                    if ((string)GlobalTable.Rows[rowNumber].Cells["Login"].Value == info.Login
+                    && (int)GlobalTable.Rows[rowNumber].Cells["Age"].Value == info.Age
+                    && (int)GlobalTable.Rows[rowNumber].Cells["PassedLevels"].Value == info.PassedLevels
+                    && (string)GlobalTable.Rows[rowNumber].Cells["GameName"].Value == info.GameName
+                    && (string)GlobalTable.Rows[rowNumber].Cells["Developer"].Value == info.Developer
+                    && (string)GlobalTable.Rows[rowNumber].Cells["Contacts"].Value == info.Contacts
+                    && (string)GlobalTable.Rows[rowNumber].Cells["FirstTimePlayed"].Value == info.FirstTimePlayed
+                    && (string)GlobalTable.Rows[rowNumber].Cells["LastTimePlayed"].Value == info.LastTimePlayed)
                     {
-                        UsersTable.Rows.Remove(UsersTable.Rows[rowNumber]);
+                        GlobalTable.Rows.Remove(GlobalTable.Rows[rowNumber]);
                     }
                 }
+
                 return true;
             }
             return false;
