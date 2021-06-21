@@ -46,26 +46,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FilterDialog.cs">
+    <Compile Include="GlobalTable\GlobalTable_Filter_Frame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FilterDialog.Designer.cs">
-      <DependentUpon>FilterDialog.cs</DependentUpon>
+    <Compile Include="GlobalTable\GlobalTable_Filter_Frame.Designer.cs">
+      <DependentUpon>GlobalTable_Filter_Frame.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayerInformation.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="GlobalTable\GlobalInformation_Access_Syncronized.cs" />
+    <Compile Include="GlobalTable\GlobalnformationList.cs" />
+    <Compile Include="GlobalTable\Smirnov_GlobalInformationBlackRedTree.cs" />
+    <Compile Include="UsersTable\PlayersTable_Filter_Frame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="UsersTable\PlayersTable_Filter_Frame.Designer.cs">
+      <DependentUpon>PlayersTable_Filter_Frame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersTable\PlayerInformation_Access_Syncronized.cs" />
+    <Compile Include="UsersTable\PlayersTable_ChangeInfo_Frame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersTable\PlayersTable_ChangeInfo_Frame.Designer.cs">
+      <DependentUpon>PlayersTable_ChangeInfo_Frame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_InformationClasses.cs" />
+    <Compile Include="GlobalTable\GlobalTable_ChangeInfo_Frame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GlobalTable\GlobalTable_ChangeInfo_Frame.Designer.cs">
+      <DependentUpon>GlobalTable_ChangeInfo_Frame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersTable\PlayerInformationHashTable.cs" />
+    <Compile Include="MainFrame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrame.Designer.cs">
+      <DependentUpon>MainFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="GlobalTable\GlobalTable_Filter_Frame.resx">
+      <DependentUpon>GlobalTable_Filter_Frame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FilterDialog.resx">
-      <DependentUpon>FilterDialog.cs</DependentUpon>
+    <EmbeddedResource Include="GlobalTable\GlobalTable_ChangeInfo_Frame.resx">
+      <DependentUpon>GlobalTable_ChangeInfo_Frame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrame.resx">
+      <DependentUpon>MainFrame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,6 +102,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UsersTable\PlayersTable_ChangeInfo_Frame.resx">
+      <DependentUpon>PlayersTable_ChangeInfo_Frame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersTable\PlayersTable_Filter_Frame.resx">
+      <DependentUpon>PlayersTable_Filter_Frame.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\PlayerInformation.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -90,5 +122,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
