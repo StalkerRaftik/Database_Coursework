@@ -17,24 +17,30 @@ namespace _30_05_2021_Database_Coursework
         };
 
         public TreeElem Head = null; // Корень дерева
+        public MainFrame OriginFrame;
 
+        private Smirnov_GlobalInformationBlackRedTree() { }
+        public Smirnov_GlobalInformationBlackRedTree(MainFrame OriginFrame) { this.OriginFrame = OriginFrame; }
 
         // Рекурсивный вывод дерева
         // Формальные и входные параметры - нет
         // Выходные данные - значения элементов дерева, цвет элементов
-        public void PrintTree()
+        public string PrintTree()
         {
-            print_Tree_Hidden(Head, 0);
+            OriginFrame.AddLog("Вывод дерева(возраста)");
+            string result = "";
+            print_Tree_Hidden(Head, 0, ref result);
+            return result;
         }
 
-        private void print_Tree_Hidden(TreeElem p, int level)
+        private void print_Tree_Hidden(TreeElem p, int level, ref string result)
         {
             if (p != null)
             {
-                print_Tree_Hidden(p.right, level + 1);
-                for (int i = 0; i < level; i++) Console.Write("   ");
-                Console.WriteLine(p.info.Age + p.color);
-                print_Tree_Hidden(p.left, level + 1);
+                print_Tree_Hidden(p.right, level + 1, ref result);
+                for (int i = 0; i < level; i++) result += "   ";
+                result += p.info.Age + p.color + "\n";
+                print_Tree_Hidden(p.left, level + 1, ref result);
             }
         }
 
@@ -298,6 +304,8 @@ namespace _30_05_2021_Database_Coursework
                 }
                 CheckBalance(newelem);
             }
+            OriginFrame.AddLog("[Smirnov Black-Red-Tree] Добавлен новый элемент в дерево");
+            OriginFrame.AddLog(PrintTree());
             return true;
         }
 
@@ -547,6 +555,8 @@ namespace _30_05_2021_Database_Coursework
                 ElementToDelete.info = max.info;
             }
             if (elclr == "b") DeleteBalance(Parent, child);
+            OriginFrame.AddLog("[Smirnov Black-Red-Tree] Был удален элемент из дерева");
+            OriginFrame.AddLog(PrintTree());
             return true;
         }
 
@@ -554,14 +564,36 @@ namespace _30_05_2021_Database_Coursework
         public List<GlobalInformation> FindByInterval(int from, int to)
         {
             List<GlobalInformation> result = new List<GlobalInformation>();
+            int comp = 0;
+            TreeElem mover = Head;
+            while (mover != null)
+            {
+                comp++;
+                if (mover.info.Age == from)
+                    break;
+                if (mover.info.Age > from)
+                    mover = mover.left;
+                else
+                    mover = mover.right;
+            }
+            mover = Head;
+            while (mover != null)
+            {
+                comp++;
+                if (mover.info.Age == to)
+                    break;
+                if (mover.info.Age > to)
+                    mover = mover.left;
+                else
+                    mover = mover.right;
+            }
+            comp--;
 
             if (Head == null) return null;
 
             Stack<TreeElem> st = new Stack<TreeElem>();
             st.Push(Head);
 
-            // Поиск ближайшего к левой границе
-            TreeElem NearMinElem = null;
             while (st.Count != 0)
             {
                 TreeElem curEl = st.Pop();
@@ -571,41 +603,13 @@ namespace _30_05_2021_Database_Coursework
                 if (curEl.right != null)
                     st.Push(curEl.right);
 
-                if (curEl.info.Age == from)
+                if (curEl.info.Age >= from && curEl.info.Age <= to)
                 {
-                    NearMinElem = curEl;
-                    break;
-                }
-                else if (curEl.info.Age > from)
-                {
-                    if (NearMinElem == null)
-                    {
-                        NearMinElem = curEl;
-                    }
-                    else if (curEl.info.Age < NearMinElem.info.Age)
-                    {
-                        NearMinElem = curEl;
-                    }
-                }
-            }
-            if (NearMinElem == null) return null; // Если все элементы меньше левой границы, то все
-            if (NearMinElem.info.Age > to) return null; // Если минимум больше максимума
-
-            st.Clear(); // Очищаем стэк
-            st.Push(Head);
-            while (st.Count != 0) // Пробегаем дерево в справа налево. Если >= левой границе, то добавляем в result
-            {
-                TreeElem curEl = st.Pop();
-
-                if (curEl.right != null)
-                    st.Push(curEl.right);
-                if (curEl.left != null)
-                    st.Push(curEl.left);
-
-                if (curEl.info.Age >= NearMinElem.info.Age && curEl.info.Age <= to)
                     result.Add(curEl.info);
+                }
             }
 
+            OriginFrame.AddLog("[Smirnov Black-Red-Tree] Был совершен поиск по диапазону. Найдено подходящих элементов: " + result.Count + ", совершено сравнений: " + comp);
             return result;
         }
     }

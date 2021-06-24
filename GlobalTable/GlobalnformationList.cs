@@ -41,7 +41,7 @@ namespace _30_05_2021_Database_Coursework
 		// Добавление элемента
 		public bool Add(GlobalInformation info)
         {
-			if ( this.FindElemInfo(info.Login) != null ) return false;
+			if ( this.FindElemInfo(info.Login, info.GameName) != null ) return false;
 
 			var Elem = new ListElem();
 			Elem.Info = (GlobalInformation)info.Clone();
@@ -101,12 +101,12 @@ namespace _30_05_2021_Database_Coursework
 
 
 		// Поиск по логину
-		public GlobalInformation FindElemInfo(string login)
+		public GlobalInformation FindElemInfo(string login, string GameName)
         {
 			ListElem mover = this.Head;
 			while (mover != null)
 			{
-				if (mover.Info.Login == login) return mover.Info;
+				if (mover.Info.Login == login && mover.Info.GameName == GameName) return mover.Info;
 				mover = mover.Next;
 			}
 			return null;

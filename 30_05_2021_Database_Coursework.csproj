@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DebugFrame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DebugFrame.Designer.cs">
+      <DependentUpon>DebugFrame.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalTable\GlobalTable_Filter_Frame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DebugFrame.resx">
+      <DependentUpon>DebugFrame.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GlobalTable\GlobalTable_Filter_Frame.resx">
       <DependentUpon>GlobalTable_Filter_Frame.cs</DependentUpon>
     </EmbeddedResource>

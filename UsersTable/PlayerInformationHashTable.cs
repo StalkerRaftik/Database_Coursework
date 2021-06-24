@@ -45,7 +45,7 @@ namespace _30_05_2021_Database_Coursework
 			// Добавление элемента по убыванию
 			public bool Add(PlayerInformation info)
 			{
-				if (this.FindElem(info) != null) return false;
+				if (this.FindElemInfo(info.Login) != null) return false;
 
 				var Elem = new ListElem();
 				Elem.Info = (PlayerInformation)info.Clone();
@@ -140,16 +140,25 @@ namespace _30_05_2021_Database_Coursework
 			}
 		};
 
-		private const int SIZE = 10000;
-		private TwoLinkedList[] Table = new TwoLinkedList[SIZE]; 
+        private const int _SIZE = 10000;
+		public int Size
+		{
+			get { return _SIZE; }
+		}
 
-		public PlayerInformationHashTable()
+		public TwoLinkedList[] Table = new TwoLinkedList[_SIZE];
+
+		private MainFrame OriginFrame;
+
+		private PlayerInformationHashTable() { }
+		public PlayerInformationHashTable(MainFrame OriginFrame)
         {
-			for (int i = 0; i < SIZE; i++)
-            {
+			this.OriginFrame = OriginFrame;
+			for (int i = 0; i < _SIZE; i++)
+			{
 				Table[i] = new TwoLinkedList();
-            }
-        }
+			}
+		}
 
 		// Хэш-функция - ключ логин
 		private int hashFunc(PlayerInformation info)
@@ -167,7 +176,7 @@ namespace _30_05_2021_Database_Coursework
 			key = key >> 11; // Отбрасываем 11 младших бит
 			key = key % 1024; // Возвращаем 10 младших бит
 
-			return key % SIZE;
+			return key % _SIZE;
 		}
 
 		public bool Add(PlayerInformation info)
@@ -175,15 +184,26 @@ namespace _30_05_2021_Database_Coursework
 			int key = hashFunc(info);
 			bool SuccessfulAdd = Table[key].Add(info);
 
-			//if (SuccessfulAdd)
-			//{
-			//	//
-			//}
-			//else
-			//{
-			//	//
-			//}
-			return SuccessfulAdd;
+            if (SuccessfulAdd)
+            {
+				OriginFrame.AddLog("[Хэш - Игроки-Возраст] Добавлен новый элемент: логин - " + info.Login + ", возраст - " + info.Age + ", хэш: " + key);
+
+				//for (int i = 0; i < _SIZE; i++)
+    //            {
+				//	OriginFrame.AddLog("=====" + i + "=====");
+				//	TwoLinkedList.ListElem mover = Table[i].Head;
+				//	while (mover != null)
+    //                {
+				//		OriginFrame.AddLog(mover.Info.Login + " " + mover.Info.Age);
+				//		mover = mover.Next;
+    //                }
+				//}
+            }
+            else
+            {
+				OriginFrame.AddLog("[Хэш - Игроки-Возраст] Попытка добавить уже существующего пользователя!");
+			}
+            return SuccessfulAdd;
 		}
 
 		public PlayerInformation Find(PlayerInformation info)
@@ -218,7 +238,7 @@ namespace _30_05_2021_Database_Coursework
 
 		public void ClearHashTable()
 		{
-			for (int i = 0; i < SIZE; i++)
+			for (int i = 0; i < _SIZE; i++)
 			{
 				Table[i].Clear();
 			}
