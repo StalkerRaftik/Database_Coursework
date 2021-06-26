@@ -69,5 +69,15 @@ namespace _30_05_2021_Database_Coursework
             }
             return false;
         }
+
+        public void Clear()
+        {
+            var GlobalTable = OriginFrame.FrameTables.TabPages[0].Controls.OfType<DataGridView>().First();
+            while (GlobalTable.Rows.Count != 0)
+            {
+                GlobalTable.Rows.Remove(GlobalTable.Rows[0]);
+            }
+            OriginFrame.GlobalInformation.Clear();
+        }
     }
 }

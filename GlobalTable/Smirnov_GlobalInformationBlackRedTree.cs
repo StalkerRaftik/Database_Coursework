@@ -353,6 +353,10 @@ namespace _30_05_2021_Database_Coursework
                     }
                 }
             }
+            else
+            {
+                Head = null;
+            }
             elem = null;
 
 
@@ -364,6 +368,9 @@ namespace _30_05_2021_Database_Coursework
         // Выходные данные - нет
         private void DeleteBalance(TreeElem elem, TreeElem child)
         {
+            if (elem == null) return;
+            if (Head == null) return;
+
             TreeElem Parent = GetParent(elem);
             TreeElem Grandparent = GetParent(Parent);
 
@@ -532,6 +539,7 @@ namespace _30_05_2021_Database_Coursework
         {
             TreeElem ElementToDelete = FindElem(Head, info);
             if (ElementToDelete == null) return false;
+
             TreeElem child = null;
             string elclr = ElementToDelete.color;
             TreeElem Parent = GetParent(ElementToDelete);

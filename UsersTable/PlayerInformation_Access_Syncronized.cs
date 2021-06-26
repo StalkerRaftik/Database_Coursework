@@ -50,5 +50,16 @@ namespace _30_05_2021_Database_Coursework
             }
             return false;
         }
+
+        public void Clear()
+        {
+            var LocalTable = OriginFrame.FrameTables.TabPages[1].Controls.OfType<DataGridView>().First();
+            while (LocalTable.Rows.Count != 0)
+            {
+                LocalTable.Rows.Remove(LocalTable.Rows[0]);
+            }
+
+            OriginFrame.PlayersInformationHash.Clear();
+        }
     }
 }

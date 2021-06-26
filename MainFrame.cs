@@ -87,7 +87,7 @@ namespace _30_05_2021_Database_Coursework
                         GlobalInformation info = mover.Info;
 
                         StringData += info.Login + " " + info.Age + " " + info.PassedLevels + " " + info.GameName + " "
-                            + info.Developer + " " + " " + info.Contacts + " " + info.FirstTimePlayed + " "
+                            + info.Developer + " " + info.Contacts + " " + info.FirstTimePlayed + " "
                             + info.LastTimePlayed + "\n";
 
                         mover = mover.Next;
@@ -95,15 +95,9 @@ namespace _30_05_2021_Database_Coursework
                     StringData += "\n";
 
 
-                    for (int i = 0; i < PlayersInformationHash.Size; i++)
+                    for (int i = 0; i < PlayersInformationHash.Count; i++)
                     {
-                        PlayerInformationHashTable.TwoLinkedList.ListElem mover2 = PlayersInformationHash.Table[i].Head;
-                        while (mover2 != null)
-                        {
-                            StringData += mover2.Info.Login + " " + mover2.Info.Age + "\n";
-
-                            mover2 = mover2.Next;
-                        }
+                        StringData += PlayersInformationHash[i].Login + " " + PlayersInformationHash[i].Age + "\n";
                     }
 
 
@@ -132,6 +126,11 @@ namespace _30_05_2021_Database_Coursework
 
         private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            PlayerInformation_Access_Syncronized PI_Access = new PlayerInformation_Access_Syncronized(this);
+            GlobalInformation_Access_Syncronized GI_Access = new GlobalInformation_Access_Syncronized(this);
+            PI_Access.Clear();
+            GI_Access.Clear();
+
             Stream LoadStream;  //данные
             OpenFileDialog loadMapDialog = new OpenFileDialog();  //диалог для загрузки файла
 
@@ -174,7 +173,6 @@ namespace _30_05_2021_Database_Coursework
                                     info.FirstTimePlayed = Infos[6];
                                     info.LastTimePlayed = Infos[7];
 
-                                    GlobalInformation_Access_Syncronized GI_Access = new GlobalInformation_Access_Syncronized(this);
                                     GI_Access.AddData(info);
                                     break;
                                 case 1:
@@ -182,12 +180,13 @@ namespace _30_05_2021_Database_Coursework
                                     info2.Login = Infos[0];
                                     info2.Age = int.Parse(Infos[1]);
 
-                                    PlayerInformation_Access_Syncronized PI_Access = new PlayerInformation_Access_Syncronized(this);
                                     PI_Access.AddData(info2);
                                     break;
                             }
                         }
                     }
+
+                    LoadStream.Close();  //закрыть файл
                 }
             }
         }
@@ -236,7 +235,7 @@ namespace _30_05_2021_Database_Coursework
 
         private void PlayersTable_FilterInformation_Click(object sender, EventArgs e)
         {
-            PlayersTable_Filter_Frame testDialog = new PlayersTable_Filter_Frame(this, InterfaceCodes.FilterLocalTable);
+            UsersLocalTable_Filter_Frame testDialog = new UsersLocalTable_Filter_Frame(this);
             testDialog.ShowDialog(this);
             testDialog.Dispose();
         }

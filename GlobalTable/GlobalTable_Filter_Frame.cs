@@ -50,10 +50,15 @@ namespace _30_05_2021_Database_Coursework
         {
             switch(FilterComboBox.Text)
             {
+                case "Поиск по логину":
+                    Login_Filter_Frame LoginFilterPlayerDialog = new Login_Filter_Frame(OriginFrame, InterfaceCodes.FilterGlobalTable);
+                    LoginFilterPlayerDialog.ShowDialog(OriginFrame);
+                    LoginFilterPlayerDialog.Dispose();
+                    break;
                 case "Поиск по возрасту":
-                    PlayersTable_Filter_Frame filterPlayerDialog = new PlayersTable_Filter_Frame(OriginFrame, InterfaceCodes.FilterGlobalTable);
-                    filterPlayerDialog.ShowDialog(OriginFrame);
-                    filterPlayerDialog.Dispose();
+                    Age_Filter_Frame AgeFilterPlayerDialog = new Age_Filter_Frame(OriginFrame, InterfaceCodes.FilterGlobalTable);
+                    AgeFilterPlayerDialog.ShowDialog(OriginFrame);
+                    AgeFilterPlayerDialog.Dispose();
 
                     Close();
                     break;

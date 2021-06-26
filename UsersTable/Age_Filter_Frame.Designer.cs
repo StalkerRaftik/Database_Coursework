@@ -1,7 +1,7 @@
 ﻿
 namespace _30_05_2021_Database_Coursework
 {
-    partial class PlayersTable_Filter_Frame
+    partial class Age_Filter_Frame
     {
         /// <summary>
         /// Required designer variable.
@@ -94,9 +94,9 @@ namespace _30_05_2021_Database_Coursework
             // 
             // AgeFilterButton
             // 
-            this.AgeFilterButton.Location = new System.Drawing.Point(89, 267);
+            this.AgeFilterButton.Location = new System.Drawing.Point(87, 242);
             this.AgeFilterButton.Name = "AgeFilterButton";
-            this.AgeFilterButton.Size = new System.Drawing.Size(131, 50);
+            this.AgeFilterButton.Size = new System.Drawing.Size(133, 47);
             this.AgeFilterButton.TabIndex = 6;
             this.AgeFilterButton.Text = "Поиск";
             this.AgeFilterButton.UseVisualStyleBackColor = true;

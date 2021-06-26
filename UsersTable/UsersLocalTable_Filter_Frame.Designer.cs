@@ -1,7 +1,7 @@
 ﻿
 namespace _30_05_2021_Database_Coursework
 {
-    partial class GlobalTable_Filter_Frame
+    partial class UsersLocalTable_Filter_Frame
     {
         /// <summary>
         /// Required designer variable.
@@ -73,7 +73,7 @@ namespace _30_05_2021_Database_Coursework
             // 
             this.playerInformationBindingSource.DataSource = typeof(_30_05_2021_Database_Coursework.PlayerInformation);
             // 
-            // GlobalTable_Filter_Frame
+            // LocalTable_Filter_Frame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -81,7 +81,7 @@ namespace _30_05_2021_Database_Coursework
             this.Controls.Add(this.FilterLabel);
             this.Controls.Add(this.FilterDataTypeButton);
             this.Controls.Add(this.FilterComboBox);
-            this.Name = "GlobalTable_Filter_Frame";
+            this.Name = "LocalTable_Filter_Frame";
             this.Text = "Поиск";
             ((System.ComponentModel.ISupportInitialize)(this.playerInformationBindingSource)).EndInit();
             this.ResumeLayout(false);

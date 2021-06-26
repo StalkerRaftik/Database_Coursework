@@ -61,11 +61,23 @@
     <Compile Include="GlobalTable\GlobalInformation_Access_Syncronized.cs" />
     <Compile Include="GlobalTable\GlobalnformationList.cs" />
     <Compile Include="GlobalTable\Smirnov_GlobalInformationBlackRedTree.cs" />
-    <Compile Include="UsersTable\PlayersTable_Filter_Frame.cs">
+    <Compile Include="UsersTable\Login_Filter_Frame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UsersTable\PlayersTable_Filter_Frame.Designer.cs">
-      <DependentUpon>PlayersTable_Filter_Frame.cs</DependentUpon>
+    <Compile Include="UsersTable\Login_Filter_Frame.Designer.cs">
+      <DependentUpon>Login_Filter_Frame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersTable\UsersLocalTable_Filter_Frame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersTable\UsersLocalTable_Filter_Frame.Designer.cs">
+      <DependentUpon>UsersLocalTable_Filter_Frame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersTable\Age_Filter_Frame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersTable\Age_Filter_Frame.Designer.cs">
+      <DependentUpon>Age_Filter_Frame.cs</DependentUpon>
     </Compile>
     <Compile Include="UsersTable\PlayerInformation_Access_Syncronized.cs" />
     <Compile Include="UsersTable\PlayersTable_ChangeInfo_Frame.cs">
@@ -111,11 +123,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UsersTable\Login_Filter_Frame.resx">
+      <DependentUpon>Login_Filter_Frame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersTable\UsersLocalTable_Filter_Frame.resx">
+      <DependentUpon>UsersLocalTable_Filter_Frame.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsersTable\PlayersTable_ChangeInfo_Frame.resx">
       <DependentUpon>PlayersTable_ChangeInfo_Frame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UsersTable\PlayersTable_Filter_Frame.resx">
-      <DependentUpon>PlayersTable_Filter_Frame.cs</DependentUpon>
+    <EmbeddedResource Include="UsersTable\Age_Filter_Frame.resx">
+      <DependentUpon>Age_Filter_Frame.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\PlayerInformation.datasource" />
     <None Include="Properties\Settings.settings">

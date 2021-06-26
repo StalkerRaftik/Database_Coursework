@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace _30_05_2021_Database_Coursework
 {
-    public partial class PlayersTable_Filter_Frame : Form
+    public partial class Age_Filter_Frame : Form
     {
         private MainFrame OriginFrame;
         private FilterData filterHandler;
         public bool IsFilterOn;
-        public PlayersTable_Filter_Frame(MainFrame OriginFrame, InterfaceCodes code)
+        public Age_Filter_Frame(MainFrame OriginFrame, InterfaceCodes code)
         {
             InitializeComponent();
             this.OriginFrame = OriginFrame;
@@ -23,6 +23,9 @@ namespace _30_05_2021_Database_Coursework
             {
                 case InterfaceCodes.FilterGlobalTable:
                     filterHandler = new FilterGlobalData(this);
+                    break;
+                case InterfaceCodes.FilterLocalTable:
+                    filterHandler = new FilterLocalData(this);
                     break;
             }
         }
@@ -39,8 +42,8 @@ namespace _30_05_2021_Database_Coursework
 
         class FilterGlobalData : FilterData
         {
-            PlayersTable_Filter_Frame CurFrame;
-            public FilterGlobalData(PlayersTable_Filter_Frame CurFrame)
+            Age_Filter_Frame CurFrame;
+            public FilterGlobalData(Age_Filter_Frame CurFrame)
             {
                 this.CurFrame = CurFrame;
             }
@@ -72,16 +75,31 @@ namespace _30_05_2021_Database_Coursework
 
         class FilterLocalData : FilterData
         {
-            PlayersTable_Filter_Frame CurFrame;
-            public FilterLocalData(PlayersTable_Filter_Frame CurFrame)
+            Age_Filter_Frame CurFrame;
+            public FilterLocalData(Age_Filter_Frame CurFrame)
             {
                 this.CurFrame = CurFrame;
             }
 
             public override void FilterDataFromInterface(MainFrame OriginFrame, int from, int to)
             {
-                // Доделать
+                // Очищаем таблицу
+                var LocalTable = OriginFrame.FrameTables.TabPages[1].Controls.OfType<DataGridView>().First();
+                while (LocalTable.Rows.Count != 0)
+                {
+                    LocalTable.Rows.Remove(LocalTable.Rows[0]);
+                }
+
+                var FilteredElements = OriginFrame.PlayersInformationHash.FindByAgesInterval(from, to);
+                for (int i = 0; i < FilteredElements.Count; i++)
+                {
+                    int rowNumber = LocalTable.Rows.Add();
+                    LocalTable.Rows[rowNumber].Cells["PlayersTableLogin"].Value = FilteredElements[i].Login;
+                    LocalTable.Rows[rowNumber].Cells["PlayersTableAge"].Value = FilteredElements[i].Age;
+                }
             }
         }
+
+        
     }
 }
