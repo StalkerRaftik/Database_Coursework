@@ -135,6 +135,7 @@
     <EmbeddedResource Include="UsersTable\Age_Filter_Frame.resx">
       <DependentUpon>Age_Filter_Frame.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\PlayerInformation.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

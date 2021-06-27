@@ -86,18 +86,21 @@ namespace _30_05_2021_Database_Coursework
                     {
                         GlobalInformation info = mover.Info;
 
-                        StringData += info.Login + " " + info.Age + " " + info.PassedLevels + " " + info.GameName + " "
-                            + info.Developer + " " + info.Contacts + " " + info.FirstTimePlayed + " "
-                            + info.LastTimePlayed + "\n";
+                        StringData += info.Login + "\t" + info.Age + "\t" + info.PassedLevels + "\t" + info.GameName + "\t"
+                            + info.Developer + "\t" + info.Contacts + "\t" + info.FirstTimePlayed + "\t"
+                            + info.LastTimePlayed + "\r\n";
 
                         mover = mover.Next;
                     }
-                    StringData += "\n";
+                    StringData += "#\r\n";
 
 
-                    for (int i = 0; i < PlayersInformationHash.Count; i++)
+                    for (int i = 0; i < PlayersInformationHash.Size; i++)
                     {
-                        StringData += PlayersInformationHash[i].Login + " " + PlayersInformationHash[i].Age + "\n";
+                        if  (PlayersInformationHash[i] != null)
+                        {
+                            StringData += PlayersInformationHash[i].Login + "\t" + PlayersInformationHash[i].Age + "\r\n";
+                        }
                     }
 
 
@@ -150,16 +153,17 @@ namespace _30_05_2021_Database_Coursework
                     string textFromFile = System.Text.Encoding.Default.GetString(array);
 
 
-
-                    string[] Rows = textFromFile.Split('\n'); //просматриваем строку и разбивает ее на подстроки
+                    string[] Rows = textFromFile.Split("\r\n".ToCharArray()); //просматриваем строку и разбивает ее на подстроки
                     int CurTable = 0;
                     for (int ri = 0; ri < Rows.Length - 1; ri++) //разбить на строки
                     {
                         if (Rows[ri] == "")
+                            continue;
+                        if (Rows[ri] == "#")
                             CurTable++;
                         else
                         {
-                            string[] Infos = Rows[ri].Split(' ');
+                            string[] Infos = Rows[ri].Split('\t');
                             switch (CurTable)
                             {
                                 case 0:
@@ -173,7 +177,31 @@ namespace _30_05_2021_Database_Coursework
                                     info.FirstTimePlayed = Infos[6];
                                     info.LastTimePlayed = Infos[7];
 
-                                    GI_Access.AddData(info);
+                                    var Added = GI_Access.AddData(info);
+
+                                    if (Added)
+                                    {
+                                        // Проверка для UserTable, есть ли у нас игрок с таким логином и возрастом
+                                        var PotentialNewPlayerInformation = new PlayerInformation
+                                        {
+                                            Login = info.Login,
+                                            Age = info.Age
+                                        };
+
+                                        var ExistingInfo = PlayersInformationHash.Find(PotentialNewPlayerInformation);
+                                        if (ExistingInfo == null)
+                                        {
+                                            PI_Access.AddData(PotentialNewPlayerInformation);
+                                        }
+                                        else
+                                        {
+                                            if (PotentialNewPlayerInformation.Age != ExistingInfo.Age)
+                                            {
+                                                PI_Access.RemoveData(ExistingInfo);
+                                                PI_Access.AddData(PotentialNewPlayerInformation);
+                                            }
+                                        }
+                                    }
                                     break;
                                 case 1:
                                     PlayerInformation info2 = new PlayerInformation();

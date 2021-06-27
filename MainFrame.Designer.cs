@@ -29,23 +29,15 @@ namespace _30_05_2021_Database_Coursework
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainTable = new System.Windows.Forms.DataGridView();
-            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PassedLevels = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Developer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contacts = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstTimePlayed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastTimePlayed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainTable_AddInformation = new System.Windows.Forms.Button();
             this.txtResult = new System.Windows.Forms.Label();
             this.TablesControl = new System.Windows.Forms.TabControl();
@@ -57,8 +49,6 @@ namespace _30_05_2021_Database_Coursework
             this.PlayersTable_RemoveInformation = new System.Windows.Forms.Button();
             this.PlayersTable_AddInformation = new System.Windows.Forms.Button();
             this.UsersTable = new System.Windows.Forms.DataGridView();
-            this.PlayersTableLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PlayersTableAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -66,6 +56,16 @@ namespace _30_05_2021_Database_Coursework
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьДебагменюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PassedLevels = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Developer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contacts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstTimePlayed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastTimePlayed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PlayersTableLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PlayersTableAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.MainTable)).BeginInit();
             this.TablesControl.SuspendLayout();
             this.MainDatabase.SuspendLayout();
@@ -78,22 +78,22 @@ namespace _30_05_2021_Database_Coursework
             // 
             this.MainTable.AllowUserToAddRows = false;
             this.MainTable.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.NullValue = "--";
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.MainTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.NullValue = "--";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.MainTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.MainTable.BackgroundColor = System.Drawing.Color.White;
             this.MainTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.MainTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MainTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MainTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.MainTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MainTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Login,
@@ -104,97 +104,32 @@ namespace _30_05_2021_Database_Coursework
             this.Contacts,
             this.FirstTimePlayed,
             this.LastTimePlayed});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.MainTable.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.MainTable.DefaultCellStyle = dataGridViewCellStyle3;
             this.MainTable.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainTable.GridColor = System.Drawing.Color.White;
             this.MainTable.Location = new System.Drawing.Point(3, 3);
             this.MainTable.Name = "MainTable";
             this.MainTable.ReadOnly = true;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MainTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.MainTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.MainTable.RowHeadersVisible = false;
             this.MainTable.RowHeadersWidth = 51;
             this.MainTable.RowTemplate.Height = 24;
             this.MainTable.Size = new System.Drawing.Size(1264, 370);
             this.MainTable.TabIndex = 0;
-            // 
-            // Login
-            // 
-            this.Login.HeaderText = "Логин";
-            this.Login.MinimumWidth = 6;
-            this.Login.Name = "Login";
-            this.Login.ReadOnly = true;
-            this.Login.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Login.Width = 150;
-            // 
-            // Age
-            // 
-            this.Age.HeaderText = "Возраст";
-            this.Age.MinimumWidth = 6;
-            this.Age.Name = "Age";
-            this.Age.ReadOnly = true;
-            this.Age.Width = 70;
-            // 
-            // PassedLevels
-            // 
-            this.PassedLevels.HeaderText = "Пройденные уровни";
-            this.PassedLevels.MinimumWidth = 6;
-            this.PassedLevels.Name = "PassedLevels";
-            this.PassedLevels.ReadOnly = true;
-            this.PassedLevels.Width = 130;
-            // 
-            // GameName
-            // 
-            this.GameName.HeaderText = "Название игры";
-            this.GameName.MinimumWidth = 6;
-            this.GameName.Name = "GameName";
-            this.GameName.ReadOnly = true;
-            this.GameName.Width = 150;
-            // 
-            // Developer
-            // 
-            this.Developer.HeaderText = "Разработчик";
-            this.Developer.MinimumWidth = 6;
-            this.Developer.Name = "Developer";
-            this.Developer.ReadOnly = true;
-            this.Developer.Width = 120;
-            // 
-            // Contacts
-            // 
-            this.Contacts.HeaderText = "Контактная информация";
-            this.Contacts.MinimumWidth = 6;
-            this.Contacts.Name = "Contacts";
-            this.Contacts.ReadOnly = true;
-            this.Contacts.Width = 120;
-            // 
-            // FirstTimePlayed
-            // 
-            this.FirstTimePlayed.HeaderText = "Дата первого запуска";
-            this.FirstTimePlayed.MinimumWidth = 6;
-            this.FirstTimePlayed.Name = "FirstTimePlayed";
-            this.FirstTimePlayed.ReadOnly = true;
-            this.FirstTimePlayed.Width = 150;
-            // 
-            // LastTimePlayed
-            // 
-            this.LastTimePlayed.HeaderText = "Последний запуск";
-            this.LastTimePlayed.MinimumWidth = 6;
-            this.LastTimePlayed.Name = "LastTimePlayed";
-            this.LastTimePlayed.ReadOnly = true;
-            this.LastTimePlayed.Width = 120;
             // 
             // MainTable_AddInformation
             // 
@@ -329,67 +264,50 @@ namespace _30_05_2021_Database_Coursework
             // 
             this.UsersTable.AllowUserToAddRows = false;
             this.UsersTable.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.UsersTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.UsersTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.UsersTable.BackgroundColor = System.Drawing.Color.White;
             this.UsersTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.UsersTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.UsersTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UsersTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.UsersTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UsersTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PlayersTableLogin,
             this.PlayersTableAge});
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.UsersTable.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UsersTable.DefaultCellStyle = dataGridViewCellStyle7;
             this.UsersTable.Dock = System.Windows.Forms.DockStyle.Top;
             this.UsersTable.GridColor = System.Drawing.Color.White;
             this.UsersTable.Location = new System.Drawing.Point(3, 3);
             this.UsersTable.Name = "UsersTable";
             this.UsersTable.ReadOnly = true;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.UsersTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UsersTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.UsersTable.RowHeadersVisible = false;
             this.UsersTable.RowHeadersWidth = 51;
             this.UsersTable.RowTemplate.Height = 24;
             this.UsersTable.Size = new System.Drawing.Size(1264, 370);
             this.UsersTable.TabIndex = 1;
-            // 
-            // PlayersTableLogin
-            // 
-            this.PlayersTableLogin.HeaderText = "Логин";
-            this.PlayersTableLogin.MinimumWidth = 6;
-            this.PlayersTableLogin.Name = "PlayersTableLogin";
-            this.PlayersTableLogin.ReadOnly = true;
-            this.PlayersTableLogin.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlayersTableLogin.Width = 250;
-            // 
-            // PlayersTableAge
-            // 
-            this.PlayersTableAge.HeaderText = "Возраст";
-            this.PlayersTableAge.MinimumWidth = 6;
-            this.PlayersTableAge.Name = "PlayersTableAge";
-            this.PlayersTableAge.ReadOnly = true;
-            this.PlayersTableAge.Width = 70;
             // 
             // tabPage3
             // 
@@ -455,6 +373,88 @@ namespace _30_05_2021_Database_Coursework
             this.открытьДебагменюToolStripMenuItem.Text = "Открыть дебаг-меню";
             this.открытьДебагменюToolStripMenuItem.Click += new System.EventHandler(this.открытьДебагменюToolStripMenuItem_Click);
             // 
+            // Login
+            // 
+            this.Login.HeaderText = "Логин";
+            this.Login.MinimumWidth = 6;
+            this.Login.Name = "Login";
+            this.Login.ReadOnly = true;
+            this.Login.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Login.Width = 150;
+            // 
+            // Age
+            // 
+            this.Age.HeaderText = "Возраст";
+            this.Age.MinimumWidth = 6;
+            this.Age.Name = "Age";
+            this.Age.ReadOnly = true;
+            this.Age.Width = 70;
+            // 
+            // PassedLevels
+            // 
+            this.PassedLevels.HeaderText = "Пройденные уровни";
+            this.PassedLevels.MinimumWidth = 6;
+            this.PassedLevels.Name = "PassedLevels";
+            this.PassedLevels.ReadOnly = true;
+            this.PassedLevels.Width = 130;
+            // 
+            // GameName
+            // 
+            this.GameName.HeaderText = "Название игры";
+            this.GameName.MinimumWidth = 6;
+            this.GameName.Name = "GameName";
+            this.GameName.ReadOnly = true;
+            this.GameName.Width = 150;
+            // 
+            // Developer
+            // 
+            this.Developer.HeaderText = "Разработчик";
+            this.Developer.MinimumWidth = 6;
+            this.Developer.Name = "Developer";
+            this.Developer.ReadOnly = true;
+            this.Developer.Width = 120;
+            // 
+            // Contacts
+            // 
+            this.Contacts.HeaderText = "Контактная информация";
+            this.Contacts.MinimumWidth = 6;
+            this.Contacts.Name = "Contacts";
+            this.Contacts.ReadOnly = true;
+            this.Contacts.Width = 120;
+            // 
+            // FirstTimePlayed
+            // 
+            this.FirstTimePlayed.HeaderText = "Дата первого запуска";
+            this.FirstTimePlayed.MinimumWidth = 6;
+            this.FirstTimePlayed.Name = "FirstTimePlayed";
+            this.FirstTimePlayed.ReadOnly = true;
+            this.FirstTimePlayed.Width = 150;
+            // 
+            // LastTimePlayed
+            // 
+            this.LastTimePlayed.HeaderText = "Последний запуск";
+            this.LastTimePlayed.MinimumWidth = 6;
+            this.LastTimePlayed.Name = "LastTimePlayed";
+            this.LastTimePlayed.ReadOnly = true;
+            this.LastTimePlayed.Width = 120;
+            // 
+            // PlayersTableLogin
+            // 
+            this.PlayersTableLogin.HeaderText = "Логин";
+            this.PlayersTableLogin.MinimumWidth = 6;
+            this.PlayersTableLogin.Name = "PlayersTableLogin";
+            this.PlayersTableLogin.ReadOnly = true;
+            this.PlayersTableLogin.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlayersTableLogin.Width = 250;
+            // 
+            // PlayersTableAge
+            // 
+            this.PlayersTableAge.HeaderText = "Возраст";
+            this.PlayersTableAge.MinimumWidth = 6;
+            this.PlayersTableAge.Name = "PlayersTableAge";
+            this.PlayersTableAge.ReadOnly = true;
+            this.PlayersTableAge.Width = 70;
+            // 
             // MainFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -492,12 +492,14 @@ namespace _30_05_2021_Database_Coursework
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.DataGridView UsersTable;
         private System.Windows.Forms.Button PlayersTable_AddInformation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PlayersTableLogin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PlayersTableAge;
         private System.Windows.Forms.Button MainTable_DeleteInformation;
         private System.Windows.Forms.Button PlayersTable_RemoveInformation;
         private System.Windows.Forms.Button MainTable_SearchButton;
         private System.Windows.Forms.Button PlayersTable_FilterInformation;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem открытьДебагменюToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Login;
         private System.Windows.Forms.DataGridViewTextBoxColumn Age;
         private System.Windows.Forms.DataGridViewTextBoxColumn PassedLevels;
@@ -506,10 +508,8 @@ namespace _30_05_2021_Database_Coursework
         private System.Windows.Forms.DataGridViewTextBoxColumn Contacts;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstTimePlayed;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastTimePlayed;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem открытьДебагменюToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PlayersTableLogin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PlayersTableAge;
     }
 }
 

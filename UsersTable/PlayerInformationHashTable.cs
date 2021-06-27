@@ -319,12 +319,12 @@ namespace _30_05_2021_Database_Coursework
 		public bool Add(PlayerInformation info)
 		{
 			ulong Key = HashFunction(info.Login);
+			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Добавление нового пользователя. Первичный ключ - " + Key);
 			if (_Hash[Key] != null && _Hash[Key].Login == info.Login)
 			{
 				_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Попытка добавить уже существующего пользователя!");
 				return false;
 			}
-				
 
 			while (_Hash[Key] != null || _DeletedElementFlags[Key] == true)
 			{
@@ -341,7 +341,7 @@ namespace _30_05_2021_Database_Coursework
 			Count++;
 
 			_ResizeHashIfItsNecessary();
-			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Добавлен новый элемент: логин - " + info.Login + ", возраст - " + info.Age + ", хэш: " + Key);
+			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Добавлен новый элемент: логин - " + info.Login + ", возраст - " + info.Age + ", вторичный ключ: " + Key);
 			_OriginFrame.AddLog(GetInfo());
 			return true;
 		}
@@ -401,39 +401,57 @@ namespace _30_05_2021_Database_Coursework
 
 		public PlayerInformation Find(PlayerInformation info)
 		{
+			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Совершается поиск по хэш-таблице");
+			int Comparsions = 0;
+
 			ulong Key = HashFunction(info.Login);
 			if (_Hash[Key] == null && _DeletedElementFlags[Key] == false)
 			{
+				Comparsions++;
+				_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Элемент не найден. Количество сравнений: " + Comparsions);
 				return null;
 			}
 
+			Comparsions++;
 			while (_DeletedElementFlags[Key] == true || _Hash[Key].Age != info.Age && _Hash[Key].Login != info.Login)
 			{
+				Comparsions++;
 				Key = LinearProbing(Key);
 				if (_Hash[Key] == null && _DeletedElementFlags[Key] == false)
 				{
+					_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Элемент не найден. Количество сравнений: " + Comparsions);
 					return null;
 				}
 			}
+			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Элемент найден. Количество сравнений: " + Comparsions);
 			return _Hash[Key];
 		}
 
 		public PlayerInformation FindByLogin(PlayerInformation info)
 		{
+			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Совершается поиск по хэш-таблице");
+			int Comparsions = 0;
+
 			ulong Key = HashFunction(info.Login);
 			if (_Hash[Key] == null && _DeletedElementFlags[Key] == false)
 			{
+				Comparsions++;
+				_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Элемент не найден. Количество сравнений: " + Comparsions);
 				return null;
 			}
 
+			Comparsions++;
 			while (_DeletedElementFlags[Key] == true || _Hash[Key].Login != info.Login)
 			{
+				Comparsions++;
 				Key = LinearProbing(Key);
 				if (_Hash[Key] == null && _DeletedElementFlags[Key] == false)
 				{
+					_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Элемент не найден. Количество сравнений: " + Comparsions);
 					return null;
 				}
 			}
+			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Элемент найден. Количество сравнений: " + Comparsions);
 			return _Hash[Key];
 		}
 
