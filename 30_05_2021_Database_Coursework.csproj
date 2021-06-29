@@ -52,6 +52,12 @@
     <Compile Include="DebugFrame.Designer.cs">
       <DependentUpon>DebugFrame.cs</DependentUpon>
     </Compile>
+    <Compile Include="Error.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Error.Designer.cs">
+      <DependentUpon>Error.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalTable\GlobalTable_Filter_Frame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,9 @@
     <EmbeddedResource Include="DebugFrame.resx">
       <DependentUpon>DebugFrame.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Error.resx">
+      <DependentUpon>Error.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GlobalTable\GlobalTable_Filter_Frame.resx">
       <DependentUpon>GlobalTable_Filter_Frame.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +145,7 @@
       <DependentUpon>Age_Filter_Frame.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\DataSources\PlayerInformation.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -25,7 +25,7 @@ namespace _30_05_2021_Database_Coursework
             switch(code)
             {
                 case InterfaceCodes.Add:
-                    action = new AddInformation(this);
+                    action = new AddInformation(this, OriginFrame);
                     break;
                 case InterfaceCodes.Remove:
                     action = new RemoveInformation(this, OriginFrame);
@@ -58,19 +58,29 @@ namespace _30_05_2021_Database_Coursework
         class AddInformation : ChangePlayersTableData
         {
             PlayersTable_ChangeInfo_Frame CurFrame;
-            public AddInformation(PlayersTable_ChangeInfo_Frame CurFrame)
+            MainFrame OriginFrame;
+            public AddInformation(PlayersTable_ChangeInfo_Frame CurFrame, MainFrame OriginFrame)
             {
                 this.CurFrame = CurFrame;
+                this.OriginFrame = OriginFrame;
                 this.CurFrame.MainLabel.Text = "Добавить новую запись";
             }
 
             public override void ChangeDataFromInterface()
             {
+                if (CurFrame.LoginTextBox.Text == ""
+                    || CurFrame.AgeTextBox.Text == "")
+                {
+                    OriginFrame.ThrowError("Вы не заполнили все поля!");
+                    return;
+                }
+
                 PlayerInformation info = new PlayerInformation();
                 info.Login = CurFrame.LoginTextBox.Text;
                 info.Age = Int32.Parse(CurFrame.AgeTextBox.Text);
 
                 CurFrame.TableAccess.AddData(info);
+                OriginFrame.AddUserLog("Данные успешно добавлены!");
             }
         }
 
@@ -90,6 +100,13 @@ namespace _30_05_2021_Database_Coursework
 
             public override void ChangeDataFromInterface()
             {
+                if (CurFrame.LoginTextBox.Text == ""
+                    || CurFrame.AgeTextBox.Text == "")
+                {
+                    OriginFrame.ThrowError("Вы не заполнили все поля!");
+                    return;
+                }
+
                 PlayerInformation info = new PlayerInformation();
                 info.Login = CurFrame.LoginTextBox.Text;
                 info.Age = Int32.Parse(CurFrame.AgeTextBox.Text);
@@ -98,15 +115,16 @@ namespace _30_05_2021_Database_Coursework
 
                 if (Deleted)
                 {
+                    var userTableChanged = false;
                     // Изменение глобальной таблицы
                     var UsersTable = OriginFrame.FrameTables.TabPages[0].Controls.OfType<DataGridView>().First();
                     for (int i = 0; i < UsersTable.Rows.Count; i++)
                     {
-
-
                         if ((string)UsersTable.Rows[i].Cells["Login"].Value == info.Login
                             && (int)UsersTable.Rows[i].Cells["Age"].Value == info.Age)
                         {
+                            userTableChanged = true;
+
                             GlobalInformation Instance = new GlobalInformation
                             {
                                 Login = (string)UsersTable.Rows[i].Cells["Login"].Value,
@@ -123,6 +141,15 @@ namespace _30_05_2021_Database_Coursework
                             GlobalInformation_Access_Syncronized GI_Access = new GlobalInformation_Access_Syncronized(OriginFrame);
                             GI_Access.RemoveData(Instance);
                         }
+                    }
+
+                    if (userTableChanged)
+                    {
+                        OriginFrame.AddUserLog("Данные успешно удалены! Все записи в глобальной таблице, связанные с данным игроком, были удалены!");
+                    } 
+                    else
+                    {
+                        OriginFrame.AddUserLog("Данные успешно удалены!");
                     }
                 }
             }

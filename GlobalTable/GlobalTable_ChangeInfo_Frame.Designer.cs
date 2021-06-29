@@ -63,6 +63,7 @@ namespace _30_05_2021_Database_Coursework
             // LoginTextBox
             // 
             this.LoginTextBox.Location = new System.Drawing.Point(80, 64);
+            this.LoginTextBox.MaxLength = 100;
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.Size = new System.Drawing.Size(199, 22);
             this.LoginTextBox.TabIndex = 1;
@@ -89,6 +90,7 @@ namespace _30_05_2021_Database_Coursework
             // AgeTextBox
             // 
             this.AgeTextBox.Location = new System.Drawing.Point(82, 110);
+            this.AgeTextBox.MaxLength = 3;
             this.AgeTextBox.Name = "AgeTextBox";
             this.AgeTextBox.Size = new System.Drawing.Size(197, 22);
             this.AgeTextBox.TabIndex = 4;
@@ -107,6 +109,7 @@ namespace _30_05_2021_Database_Coursework
             // 
             this.GameNameComboBox.FormattingEnabled = true;
             this.GameNameComboBox.Location = new System.Drawing.Point(129, 153);
+            this.GameNameComboBox.MaxLength = 100;
             this.GameNameComboBox.Name = "GameNameComboBox";
             this.GameNameComboBox.Size = new System.Drawing.Size(150, 24);
             this.GameNameComboBox.TabIndex = 6;
@@ -150,6 +153,7 @@ namespace _30_05_2021_Database_Coursework
             // 
             this.DeveloperComboBox.FormattingEnabled = true;
             this.DeveloperComboBox.Location = new System.Drawing.Point(129, 199);
+            this.DeveloperComboBox.MaxLength = 100;
             this.DeveloperComboBox.Name = "DeveloperComboBox";
             this.DeveloperComboBox.Size = new System.Drawing.Size(150, 24);
             this.DeveloperComboBox.TabIndex = 11;
@@ -199,11 +203,12 @@ namespace _30_05_2021_Database_Coursework
             // 
             this.ContactsComboTextBox.FormattingEnabled = true;
             this.ContactsComboTextBox.Location = new System.Drawing.Point(129, 246);
+            this.ContactsComboTextBox.MaxLength = 100;
             this.ContactsComboTextBox.Name = "ContactsComboTextBox";
             this.ContactsComboTextBox.Size = new System.Drawing.Size(150, 24);
             this.ContactsComboTextBox.TabIndex = 17;
             // 
-            // GlobalTable_Interface_Frame
+            // GlobalTable_ChangeInfo_Frame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -228,7 +233,7 @@ namespace _30_05_2021_Database_Coursework
             this.Controls.Add(this.ChangeButton);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "GlobalTable_Interface_Frame";
+            this.Name = "GlobalTable_ChangeInfo_Frame";
             this.Text = "Меню";
             this.ResumeLayout(false);
             this.PerformLayout();

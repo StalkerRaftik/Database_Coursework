@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="_30_05_2021_Database_Coursework.TreeElem">
+    <Position X="8.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAACAQAAAAAAAgAA=</HashCode>
+      <FileName>GlobalTable\Smirnov_GlobalInformationBlackRedTree.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="info" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="_30_05_2021_Database_Coursework.Smirnov_GlobalInformationBlackRedTree">
+    <Position X="11" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAIAQAqAAIAEAAAAAAIAABABAAAAAAAgAAQAqAI=</HashCode>
+      <FileName>GlobalTable\Smirnov_GlobalInformationBlackRedTree.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Head" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="_30_05_2021_Database_Coursework.PlayerInformationHashTable">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgAAAABAAAgCDECAAABgQAAAAIAEABACAAAABQAAA=</HashCode>
+      <FileName>UsersTable\PlayerInformationHashTable.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_Hash" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="_30_05_2021_Database_Coursework.GlobalInformation">
+    <Position X="6.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAAAAAAAgAAAAAAAgEAAAAAAAIAAAIAAQAAwAAAAAjA=</HashCode>
+      <FileName>_InformationClasses.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="_30_05_2021_Database_Coursework.PlayerInformation">
+    <Position X="4" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAQAAAAABA=</HashCode>
+      <FileName>_InformationClasses.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

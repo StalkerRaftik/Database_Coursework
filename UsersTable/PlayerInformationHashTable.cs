@@ -295,21 +295,42 @@ namespace _30_05_2021_Database_Coursework
 			}
 		}
 
+		//// Метод сложения строк с умножением на константу в степени
+		//private long HashFunction(string login)
+		//{
+		//	const int p = 53;
+		//	long Hash = 0, p_pow = 1;
+		//	for (int i = 0; i < login.Length; i++)
+		//	{
+		//		Hash += login[i] * p_pow;
+		//		p_pow *= p;
+		//	}
+
+		//	return Hash % Size;
+		//}
+
 		// Метод сложения строк с умножением на константу в степени
-		private ulong HashFunction(string login)
+		private long HashFunction(string login)
 		{
-			const int p = 53;
-			ulong Hash = 0, p_pow = 1;
+			int Key = 0;
+			string fd = "";
 			for (int i = 0; i < login.Length; i++)
 			{
-				Hash += login[i] * p_pow;
-				p_pow *= p;
+				Key += login[i];
+				fd = fd + " + " + (int)login[i];
 			}
+			_OriginFrame.AddLog(fd);
+			Key = Key * Key;
+			_OriginFrame.AddLog(Key.ToString());
+			Key = Key >> 10; // Отбрасываем справа 10 младших битов
+			_OriginFrame.AddLog(Key.ToString());
+			Key = Key % 4096; // Берем серединные 12 битов. Старшие 10 уходят в небытие
+			_OriginFrame.AddLog(Key.ToString());
 
-			return Hash % Size;
+			return Key % Size;
 		}
 
-		private ulong LinearProbing(ulong hash)
+		private long LinearProbing(long hash)
 		{
 			if (hash == Size - 1)
 				return 0;
@@ -318,8 +339,9 @@ namespace _30_05_2021_Database_Coursework
 
 		public bool Add(PlayerInformation info)
 		{
-			ulong Key = HashFunction(info.Login);
-			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Добавление нового пользователя. Первичный ключ - " + Key);
+			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Добавление нового пользователя " + info.Login + ".");
+			long Key = HashFunction(info.Login);
+			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Первичный ключ - " + Key);
 			if (_Hash[Key] != null && _Hash[Key].Login == info.Login)
 			{
 				_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Попытка добавить уже существующего пользователя!");
@@ -348,7 +370,7 @@ namespace _30_05_2021_Database_Coursework
 
 		private bool Add(PlayerInformation info, bool internalAdditing = false)
 		{
-			ulong Key = HashFunction(info.Login);
+			long Key = HashFunction(info.Login);
 			if (_Hash[Key] != null && _Hash[Key].Login == info.Login) // Эти данные уже есть в таблице
 				return false;
 
@@ -372,7 +394,7 @@ namespace _30_05_2021_Database_Coursework
 
 		public bool Remove(PlayerInformation info)
 		{
-			ulong Key = HashFunction(info.Login);
+			long Key = HashFunction(info.Login);
 			if (_Hash[Key] == null && _DeletedElementFlags[Key] == false)
             {
 				_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Элемент для удаления не найден!");
@@ -404,7 +426,7 @@ namespace _30_05_2021_Database_Coursework
 			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Совершается поиск по хэш-таблице");
 			int Comparsions = 0;
 
-			ulong Key = HashFunction(info.Login);
+			long Key = HashFunction(info.Login);
 			if (_Hash[Key] == null && _DeletedElementFlags[Key] == false)
 			{
 				Comparsions++;
@@ -432,7 +454,7 @@ namespace _30_05_2021_Database_Coursework
 			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Совершается поиск по хэш-таблице");
 			int Comparsions = 0;
 
-			ulong Key = HashFunction(info.Login);
+			long Key = HashFunction(info.Login);
 			if (_Hash[Key] == null && _DeletedElementFlags[Key] == false)
 			{
 				Comparsions++;

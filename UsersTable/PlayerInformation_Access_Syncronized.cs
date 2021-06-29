@@ -47,6 +47,10 @@ namespace _30_05_2021_Database_Coursework
                 UsersTable.Rows[rowNumber].Cells["PlayersTableLogin"].Value = info.Login;
                 UsersTable.Rows[rowNumber].Cells["PlayersTableAge"].Value = info.Age;
                 return true;
+            } 
+            else
+            {
+                OriginFrame.ThrowError("Элемент уже находится в справочнике!");
             }
             return false;
         }

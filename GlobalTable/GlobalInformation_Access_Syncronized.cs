@@ -37,6 +37,9 @@ namespace _30_05_2021_Database_Coursework
                 OriginFrame.GlobalInformationTree.NewElem(OriginFrame.GlobalInformation.FindElemInfo(info));
 
                 return true;
+            } else
+            {
+                OriginFrame.ThrowError("Элемент уже находится в справочнике!");
             }
             return false;
         }
@@ -78,6 +81,7 @@ namespace _30_05_2021_Database_Coursework
                 GlobalTable.Rows.Remove(GlobalTable.Rows[0]);
             }
             OriginFrame.GlobalInformation.Clear();
+            OriginFrame.GlobalInformationTree.ClearTree();
         }
     }
 }

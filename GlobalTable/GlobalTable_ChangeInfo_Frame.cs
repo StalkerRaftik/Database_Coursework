@@ -74,7 +74,14 @@ namespace _30_05_2021_Database_Coursework
             {
                 if (CurFrame.LoginTextBox.Text == "" 
                     || CurFrame.AgeTextBox.Text == "" 
-                    || CurFrame.PassedLevelsTextBox.Text == "") return;
+                    || CurFrame.PassedLevelsTextBox.Text == ""
+                    || CurFrame.GameNameComboBox.Text == ""
+                    || CurFrame.DeveloperComboBox.Text == ""
+                    || CurFrame.ContactsComboTextBox.Text == "")
+                {
+                    OriginFrame.ThrowError("Вы не заполнили все поля!");
+                    return;
+                }
 
                 var info = new GlobalInformation();
                 info.Login = CurFrame.LoginTextBox.Text;
@@ -103,16 +110,23 @@ namespace _30_05_2021_Database_Coursework
                     {
                         PlayerInformation_Access_Syncronized PI_Access = new PlayerInformation_Access_Syncronized(OriginFrame);
                         PI_Access.AddData(PotentialNewPlayerInformation);
+                        OriginFrame.AddGlobalLog("Данные успешно добавлены! Несуществующий игрок был добавлен в таблицу игроков.");
+                    }
+                    else if (PotentialNewPlayerInformation.Age != ExistingInfo.Age)
+                    {
+                        PlayerInformation_Access_Syncronized PI_Access = new PlayerInformation_Access_Syncronized(OriginFrame);
+                        PI_Access.RemoveData(ExistingInfo);
+                        PI_Access.AddData(PotentialNewPlayerInformation);
+                        OriginFrame.AddGlobalLog("Данные успешно добавлены! Несовпадение возрастов исправлено на возраст, указанный в новой информации.");
                     }
                     else
                     {
-                        if (PotentialNewPlayerInformation.Age != ExistingInfo.Age)
-                        {
-                            PlayerInformation_Access_Syncronized PI_Access = new PlayerInformation_Access_Syncronized(OriginFrame);
-                            PI_Access.RemoveData(ExistingInfo);
-                            PI_Access.AddData(PotentialNewPlayerInformation);
-                        }
+                        OriginFrame.AddGlobalLog("Данные успешно добавлены!");
                     }
+                }
+                else
+                {
+                    OriginFrame.AddGlobalLog("Вы попытались повторно добавить уже существующие данные в таблицу!");
                 }
             }
         }
@@ -129,6 +143,17 @@ namespace _30_05_2021_Database_Coursework
 
             public override void ChangeDataFromInterface(MainFrame OriginFrame)
             {
+                if (CurFrame.LoginTextBox.Text == ""
+                    || CurFrame.AgeTextBox.Text == ""
+                    || CurFrame.PassedLevelsTextBox.Text == ""
+                    || CurFrame.GameNameComboBox.Text == ""
+                    || CurFrame.DeveloperComboBox.Text == ""
+                    || CurFrame.ContactsComboTextBox.Text == "")
+                {
+                    OriginFrame.ThrowError("Вы не заполнили все поля!");
+                    return;
+                }
+
                 var info = new GlobalInformation();
                 info.Login = CurFrame.LoginTextBox.Text;
                 info.Age = Int32.Parse(CurFrame.AgeTextBox.Text);
@@ -139,7 +164,16 @@ namespace _30_05_2021_Database_Coursework
                 info.FirstTimePlayed = CurFrame.FirstTimePlayedTimePicker.Value.Date.ToShortDateString();
                 info.LastTimePlayed = CurFrame.LastTimePlayedTimePicker.Value.Date.ToShortDateString();
 
-                CurFrame.GI_Access.RemoveData(info);
+                var Deleted = CurFrame.GI_Access.RemoveData(info);
+                if (Deleted)
+                {
+                    OriginFrame.AddGlobalLog("Данные успешно удалены!");
+                }
+                else
+                {
+                    OriginFrame.AddGlobalLog("Данные для удаления не найдены!");
+                }
+                
             }
         }
     }

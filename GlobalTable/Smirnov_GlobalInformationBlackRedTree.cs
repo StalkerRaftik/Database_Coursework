@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace _30_05_2021_Database_Coursework
 {
+
+    public class TreeElem
+    {
+        public TreeElem left = null; // Левый потомок
+        public TreeElem right = null; // Правый потомок
+        public string color = "r"; // Цвет узла
+        public GlobalInformation info; // Ключ узла
+    };
+
     public class Smirnov_GlobalInformationBlackRedTree
     {
-        public class TreeElem
-        {
-            public TreeElem left = null; // Левый потомок
-            public TreeElem right = null; // Правый потомок
-            public string color = "r"; // Цвет узла
-            public GlobalInformation info; // Ключ узла
-        };
+        
 
         public TreeElem Head = null; // Корень дерева
         public MainFrame OriginFrame;

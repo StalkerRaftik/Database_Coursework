@@ -56,6 +56,14 @@ namespace _30_05_2021_Database_Coursework
             }
         }
 
+        Error _Error;
+        public void ThrowError(string error)
+        {
+            _Error = new Error(error);
+            _Error.ShowDialog(this);
+            _Error.Dispose();
+        }
+
         private void открытьДебагменюToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Debug = new DebugFrame(Log);
@@ -244,6 +252,11 @@ namespace _30_05_2021_Database_Coursework
             FilterInformationDialog.Dispose();
         }
 
+        public void AddGlobalLog(string log)
+        {
+            GlobalTableUserLogTextbox.Text = log;
+        }
+
         //===========================================
         //========== Таблица игроков ================
         //===============(хэндлеры)==================
@@ -268,7 +281,10 @@ namespace _30_05_2021_Database_Coursework
             testDialog.Dispose();
         }
 
-
+        public void AddUserLog(string log)
+        {
+            UsersTableUserLogTextbox.Text = log;
+        }
 
         //===========================================
         //========== Таблица ...... ================
