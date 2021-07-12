@@ -58,6 +58,11 @@ namespace _30_05_2021_Database_Coursework
                 }
 
                 var FilteredElements = OriginFrame.GlobalInformationTree.FindByInterval(from, to);
+                if (FilteredElements == null)
+                {
+                    return;
+                }
+                    
                 for (int i = 0; i < FilteredElements.Count; i++)
                 {
                     int rowNumber = GlobalTable.Rows.Add();

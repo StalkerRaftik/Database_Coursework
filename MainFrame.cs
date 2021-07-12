@@ -225,6 +225,8 @@ namespace _30_05_2021_Database_Coursework
                     LoadStream.Close();  //закрыть файл
                 }
             }
+
+            //PlayersInformationHash.Parser(7, 3);
         }
 
         //===========================================

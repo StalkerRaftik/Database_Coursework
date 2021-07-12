@@ -93,31 +93,30 @@ namespace _30_05_2021_Database_Coursework
                 info.FirstTimePlayed = CurFrame.FirstTimePlayedTimePicker.Value.Date.ToShortDateString();
                 info.LastTimePlayed = CurFrame.LastTimePlayedTimePicker.Value.Date.ToShortDateString();
 
+                
+                var PotentialNewPlayerInformation = new PlayerInformation
+                {
+                    Login = info.Login,
+                    Age = info.Age
+                };
+                var ExistingInfo = OriginFrame.PlayersInformationHash.Find(PotentialNewPlayerInformation);
+
+                if (ExistingInfo != null && PotentialNewPlayerInformation.Age != ExistingInfo.Age)
+                {
+                    OriginFrame.AddGlobalLog("Данные не добавлены! Несовпадение возрастов у новой записи и записи в таблице 'Логин/возраст'!");
+                    return;
+                }
 
                 var Added = CurFrame.GI_Access.AddData(info);
 
                 if (Added)
                 {
                     // Проверка для UserTable, есть ли у нас игрок с таким логином и возрастом
-                    var PotentialNewPlayerInformation = new PlayerInformation
-                    {
-                        Login = info.Login,
-                        Age = info.Age
-                    };
-
-                    var ExistingInfo = OriginFrame.PlayersInformationHash.Find(PotentialNewPlayerInformation);
                     if (ExistingInfo == null)
                     {
                         PlayerInformation_Access_Syncronized PI_Access = new PlayerInformation_Access_Syncronized(OriginFrame);
                         PI_Access.AddData(PotentialNewPlayerInformation);
                         OriginFrame.AddGlobalLog("Данные успешно добавлены! Несуществующий игрок был добавлен в таблицу игроков.");
-                    }
-                    else if (PotentialNewPlayerInformation.Age != ExistingInfo.Age)
-                    {
-                        PlayerInformation_Access_Syncronized PI_Access = new PlayerInformation_Access_Syncronized(OriginFrame);
-                        PI_Access.RemoveData(ExistingInfo);
-                        PI_Access.AddData(PotentialNewPlayerInformation);
-                        OriginFrame.AddGlobalLog("Данные успешно добавлены! Несовпадение возрастов исправлено на возраст, указанный в новой информации.");
                     }
                     else
                     {

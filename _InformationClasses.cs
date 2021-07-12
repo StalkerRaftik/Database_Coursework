@@ -90,7 +90,7 @@ namespace _30_05_2021_Database_Coursework
     {
         public string Login { get; set; }
         public int Age { get; set; }
-
+        public int firstkey = 0;  
         public object Clone()
         {
             return new PlayerInformation { Login = this.Login, Age = this.Age };

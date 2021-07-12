@@ -61,6 +61,11 @@ namespace _30_05_2021_Database_Coursework
                 if (child.info.Age >= mover.info.Age)
                     mover = mover.right;
                 else mover = mover.left;
+
+                if (mover == null)
+                {
+                    return null;
+                }
             }
 
             return mover;
@@ -89,8 +94,11 @@ namespace _30_05_2021_Database_Coursework
             elem.left = Parent;
             if (Parent != Head)
             {
-                if (Grandparent.left == Parent) Grandparent.left = elem;
-                else if (Grandparent.right == Parent) Grandparent.right = elem;
+                if (Grandparent != null)
+                {
+                    if (Grandparent.left == Parent) Grandparent.left = elem;
+                    else if (Grandparent.right == Parent) Grandparent.right = elem;
+                }
             }
             else
             {
@@ -111,8 +119,11 @@ namespace _30_05_2021_Database_Coursework
             elem.right = Parent;
             if (Parent != Head)
             {
-                if (Grandparent.right == Parent) Grandparent.right = elem;
-                else if (Grandparent.left == Parent) Grandparent.left = elem;
+                if (Grandparent != null)
+                {
+                    if (Grandparent.right == Parent) Grandparent.right = elem;
+                    else if (Grandparent.left == Parent) Grandparent.left = elem;
+                }
             }
             else
             {
@@ -196,12 +207,19 @@ namespace _30_05_2021_Database_Coursework
             {
                 TreeElem Parent = GetParent(elem);
                 TreeElem Grandparent = GetParent(Parent);
+                if (Grandparent == null)
+                {
+                    Grandparent = new TreeElem();
+                    Grandparent.color = "b";
+                }
                 if (Parent == Grandparent.left)
                 {
+                    
                     TreeElem Uncle = Grandparent.right;
                     // 1 случай
                     if (Uncle != null && Uncle.color == "r")
                     {
+                        OriginFrame.AddLog("[Smirnov Black-Red-Tree] Балансировка...");
                         Parent.color = "b";
                         Uncle.color = "b";
                         Grandparent.color = "r";
@@ -216,6 +234,7 @@ namespace _30_05_2021_Database_Coursework
                             elem = Parent;
                             RotateLeft(elem.right);
                         }
+                        OriginFrame.AddLog("[Smirnov Black-Red-Tree] Балансировка...");
                         Parent = GetParent(elem);
                         Grandparent = GetParent(Parent);
                         // 3 случай ВСЕГДА
@@ -244,13 +263,32 @@ namespace _30_05_2021_Database_Coursework
                         }
                         Parent = GetParent(elem);
                         Grandparent = GetParent(Parent);
-                        Parent.color = "b";
-                        Grandparent.color = "r";
-                        RotateLeft(Grandparent.right);
+                        if (Parent != null)
+                            Parent.color = "b";
+                        if (Grandparent != null)
+                        {
+                            Grandparent.color = "r";
+                            RotateLeft(Grandparent.right);
+                        }
                     }
                 }
             }
             Head.color = "b";
+        }
+
+        public TreeElem FindElemByLoginAndGameName(TreeElem elem, string login, string GameName)
+        {
+            if (elem == null) return null;
+
+            if (elem.info.Login == login && elem.info.GameName == GameName) return elem;
+
+            TreeElem ElementToReturn = FindElemByLoginAndGameName(elem.left, login, GameName);
+            if (ElementToReturn != null) return ElementToReturn;
+
+            ElementToReturn = FindElemByLoginAndGameName(elem.right, login, GameName);
+            if (ElementToReturn != null) return ElementToReturn;
+
+            return null;
         }
 
         // Добавляет новый элемент в древо, запускает ф-ю проверки баланса
@@ -258,7 +296,7 @@ namespace _30_05_2021_Database_Coursework
         // Выходные данные - нет
         public bool NewElem(GlobalInformation info)
         {
-            if (FindElemByLogin(Head, info.Login) != null)
+            if (FindElemByLoginAndGameName(Head, info.Login, info.GameName) != null)
             {
                 return false;
             }

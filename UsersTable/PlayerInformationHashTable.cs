@@ -319,13 +319,13 @@ namespace _30_05_2021_Database_Coursework
 				Key += login[i];
 				fd = fd + " + " + (int)login[i];
 			}
-			_OriginFrame.AddLog(fd);
+			//_OriginFrame.AddLog(fd);
 			Key = Key * Key;
-			_OriginFrame.AddLog(Key.ToString());
+			//_OriginFrame.AddLog(Key.ToString());
 			Key = Key >> 10; // Отбрасываем справа 10 младших битов
-			_OriginFrame.AddLog(Key.ToString());
+			//_OriginFrame.AddLog(Key.ToString());
 			Key = Key % 4096; // Берем серединные 12 битов. Старшие 10 уходят в небытие
-			_OriginFrame.AddLog(Key.ToString());
+			//_OriginFrame.AddLog(Key.ToString());
 
 			return Key % Size;
 		}
@@ -341,6 +341,7 @@ namespace _30_05_2021_Database_Coursework
 		{
 			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Добавление нового пользователя " + info.Login + ".");
 			long Key = HashFunction(info.Login);
+			info.firstkey = (int)Key;
 			_OriginFrame.AddLog("[Хэш - Игроки-Возраст] Первичный ключ - " + Key);
 			if (_Hash[Key] != null && _Hash[Key].Login == info.Login)
 			{
@@ -371,6 +372,7 @@ namespace _30_05_2021_Database_Coursework
 		private bool Add(PlayerInformation info, bool internalAdditing = false)
 		{
 			long Key = HashFunction(info.Login);
+			info.firstkey = (int)Key;
 			if (_Hash[Key] != null && _Hash[Key].Login == info.Login) // Эти данные уже есть в таблице
 				return false;
 
@@ -389,6 +391,7 @@ namespace _30_05_2021_Database_Coursework
 				_CountWithDeletedElements++;
 				Count++;
 			}
+
 			return true;
 		}
 
@@ -489,6 +492,26 @@ namespace _30_05_2021_Database_Coursework
 			return Result;
         }
 
+		public void Parser(int info, int count)
+        {
+			string res = "1";
+			string out1 = "";
+			Random rand = new Random();
+			long hash = 0;
+			int found = 0;
+			while (found != count)
+            {
+				res = rand.Next(1, 10000000).ToString();
+				hash = HashFunction(res);
+				if (hash == info)
+                {
+					out1 += res + " ";
+					found++;
+                }
+            }
+			_OriginFrame.AddLog("nashel: " + out1);
+        }
+
 		public string GetInfo()
 		{
 			string info = "";
@@ -496,7 +519,7 @@ namespace _30_05_2021_Database_Coursework
 			for (int i = 0; i < Size; i++)
 			{
 				if (_Hash[i] != null)
-					info += i + ": " + _Hash[i].Login + " " + _Hash[i].Age + "\n";
+					info += i + ": " + _Hash[i].Login + " " + _Hash[i].Age + ", первичный: " + _Hash[i].firstkey + "\n";
 			}
 
 			info += "Total hash size: " + Size;
